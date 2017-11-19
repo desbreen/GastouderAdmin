@@ -33,6 +33,19 @@ namespace GastouderAdmin.Controllers
                 return Ok(gastouder);
             }
         }
+
+        public IHttpActionResult CreateGastouder(int id)
+        {
+            using (GastouderAdminDbContext db = new GastouderAdminDbContext())
+            {
+                var gastouder = db.Gastouders.FirstOrDefault((p) => p.Id == id);
+                if (gastouder == null)
+                {
+                    return NotFound();
+                }
+                return Ok(gastouder);
+            }
+        }
     }
 
 }
